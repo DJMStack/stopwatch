@@ -1,0 +1,36 @@
+@font-face {
+    font-family: balbek;
+    src: url(./balbek-personal-use-only.otf) format("opentype");
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'balbek' , serif;
+}
+
+body {
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 100;
+    font-family: 'balbek' , serif;
+    color: white;
+    mix-blend-mode: difference;
+    background-color: black;
+    padding: 30px;
+
+}
+
+
+
+video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+

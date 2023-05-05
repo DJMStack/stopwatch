@@ -65,3 +65,14 @@ function lap() {
     lapNow = `<div class="lap">${hours} : ${minutes} : ${seconds} : ${miliseconds}</div>`;
     lapRecord.innerHTML += lapNow;
   }
+
+/* cursor ###### */
+
+document.addEventListener('mousemove', function(e) {
+    let body = document.querySelector('body');
+    let left = e.offsetX;
+    let top = e.offsetY;
+    blob.style.left = (left + 30) + 'px';
+    blob.style.top = (top + 30) + 'px';
+})
+

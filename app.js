@@ -1,70 +1,120 @@
-let hr = min = sec = ms = "0" + 0,
-startTimer;
-var vid = document.querySelector("video");
+    document.getElementById('lap').disabled = true;
+    var seconds = "00"; 
+    var tens = "00"; 
+    var mins = "00";
+    var appendmin = document.getElementById("mins")
+    var appendTens = document.getElementById("tens")
+    var appendSeconds = document.getElementById("seconds")
+    var buttonStart = document.getElementById('start');
+    var buttonStop = document.getElementById('stop');
+    var buttonReset = document.getElementById('reset');
+    var Interval ;
 
-let lapNow = null;
+    const secDiv = document.getElementById('sec');
+    const miDiv = document.getElementById('min');
+    const lapDiv = document.getElementById('hour');
+    setInterval(updateClock, 1000);
 
-const startBtn = document.querySelector(".start"),
-stopBtn = document.querySelector(".stop"),
-resetBtn = document.querySelector(".reset");
-lapBtn = document.querySelector(".lap")
-startBtn.addEventListener("click", start);
-stopBtn.addEventListener("click", stop);
-resetBtn.addEventListener("click", reset);
-lapBtn.addEventListener('click', lap);
 
-function start() {
-    startBtn.classList.add("active");
-    stopBtn.classList.remove("stopActive");
-        startTimer = setInterval(()=>{
-        ms++
-        ms = ms < 10 ? "0" + ms : ms;
-        if(ms == 100){
-            sec++;
-            sec = sec < 10 ? "0" + sec : sec;
-            ms = "0" + 0;
-        }
-        if(sec == 60){
-            min++;
-            min = min < 10 ? "0" + min : min;
-            sec = "0" + 0;
-        }
-        if(min == 60){
-            hr++;
-            hr = hr < 10 ? "0" + hr : hr;
-            min = "0" + 0;
-        }
-        putValue();
-        vid.play();
-    },10); //1000ms = 1s
-}
+    var Lap = document.getElementById('lap');
+    var Laps = document.getElementById('laps');
+    var vid = document.querySelector("video");
 
-function stop() {
-    startBtn.classList.remove("active");
-    stopBtn.classList.add("stopActive");
-    clearInterval(startTimer);
-    vid.pause();
-}
 
-function reset() {
-    startBtn.classList.remove("active");
-    stopBtn.classList.remove("stopActive");
-    clearInterval(startTimer);
-    hr = min = sec = ms = "0" + 0;
-    putValue();
-}
+    function updateClock(){
+      let sec = seconds/ 60;
+      let mi = (mins + sec) / 60;
+      secDiv.style.transform = "rotate(" + (sec * 360) + "deg)";
+	    miDiv.style.transform = "rotate(" + (mi * 360) + "deg)";
+    }
+  
+    buttonStart.onclick = function() {
+      document.getElementById('lap').disabled = false;
+      vid.play();
+      clearInterval(Interval);
+      Interval = setInterval(startTimer, 10);
+      document.getElementById('start').disabled = true;
+      updateClock();
+    }
+    
+    buttonStop.onclick = function() {
+      vid.pause();
+      clearInterval(Interval);
+      document.getElementById('lap').disabled = true;
+      document.getElementById('start').disabled = false;
+    }
+    
+    Lap.onclick = function() {
+      Laps.innerHTML += "<li>" + appendmin.innerHTML + ":" + appendSeconds.innerHTML + ":" + appendTens.innerHTML + "</li>";
+      laprun();
+    }
 
-function putValue() {
-    document.querySelector(".millisecond").innerText = ms;
-    document.querySelector(".second").innerText = sec;
-    document.querySelector(".minute").innerText = min;
-    document.querySelector(".hour").innerText = hr;
-}
+    function laprun() {
+      tens++; 
+      let hr = 0;
+      if (tens > 99) {
+        console.log("seconds");
+        hr++;
+        tens = 0;
+      }
+      if(hr > 59 ){
+        lapDiv.style.transform = "rotate(" + (hr * 360) + "deg)";
+      }
+    }
 
-function lap() {
-    lapNow = `<div class="lap">${hours} : ${minutes} : ${seconds} : ${miliseconds}</div>`;
-    lapRecord.innerHTML += lapNow;
-  }
+
+    buttonReset.onclick = function() {
+      vid.pause();
+      document.getElementById('lap').disabled = true;
+      clearInterval(Interval);
+      tens = "00";
+      seconds = "00";
+      mins = "00";
+      appendTens.innerHTML = tens;
+      appendSeconds.innerHTML = seconds;
+      appendmin.innerHTML = mins;
+      Laps.innerHTML = '';
+      document.getElementById('start').disabled = false;
+    }
+    
+     
+    
+    function startTimer () {
+      tens++; 
+      
+      if(tens <= 9){
+        appendTens.innerHTML = "0" + tens;
+      }
+      
+      if (tens > 9){
+        appendTens.innerHTML = tens;
+        
+      } 
+      
+      if (tens > 99) {
+        console.log("seconds");
+        seconds++;
+        appendSeconds.innerHTML = "0" + seconds;
+        tens = 0;
+        appendTens.innerHTML = "0" + 0;
+      }
+      
+      if (seconds > 9){
+        appendSeconds.innerHTML = seconds;
+      }
+      
+      if(seconds > 59 ){
+        mins++;
+        seconds = 0;
+        appendSeconds.innerHTML = "0" + 0;
+        appendmin.innerHTML = "0" + mins;
+      }
+    
+    }
+    
+    
+  
+
 
 /* cursor ###### */
 
@@ -74,5 +124,4 @@ document.addEventListener('mousemove', function(e) {
     let top = e.offsetY;
     blob.style.left = (left + 30) + 'px';
     blob.style.top = (top + 30) + 'px';
-})
-
+});

@@ -14,35 +14,98 @@
 <div id="blob"></div>
 <div id="blur"></div>
 
-<div class="stopwatch">
-  <div class="time">
-    <span class="hour">00</span>
-    <span class="colon">:</span>
-    <span class="minute">00</span>
-    <span class="colon">:</span>
-    <span class="second">00</span>
-    <span class="colon ms-colon">:</span>
-    <span class="millisecond">00</span>
-   </div>
+<!--
+<div class="container">
+  <div class="navbar">
+    <nav>
+      <ul>
+        <h1>Get ready to work out</h1>
+        <li><a href="">Click here to start pacer test</a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+
+      </ul>
+    </nav>
+  </div>
+  <div class="wrapper">
+    -->
+
+    <div class="clock">
+      <div class="num num1">
+        <div>1</div>
+      </div>
+      <div class="num num2">
+        <div>2</div>
+      </div>
+      <div class="num num3">
+        <div>3</div>
+      </div>
+      <div class="num num4">
+        <div>4</div>
+      </div>
+      <div class="num num5">
+        <div>5</div>
+      </div>
+      <div class="num num6">
+        <div>6</div>
+      </div>
+      <div class="num num7">
+        <div>7</div>
+      </div>
+      <div class="num num8">
+        <div>8</div>
+      </div>
+      <div class="num num9">
+        <div>9</div>
+      </div>
+      <div class="num num10">
+        <div>10</div>
+      </div>
+      <div class="num num11">
+        <div>11</div>
+      </div>
+      <div class="num num12">
+        <div>12</div>
+      </div>
+  
+      <div class="hand" id="sec">
+        <div class="sec"></div>
+      </div>
+      <div class="hand" id="min">
+        <div class="min"></div>
+      </div>
+      <div class="hand" id="hour">
+        <div class="hour"></div>
+      </div>
+    </div> 
+
+
+    <!--clock-->
+  <p>
+    <span id="mins">00</span>:
+    <span id="seconds">00</span>:
+    <span id="tens">00</span>
+  </p>
+
 
     <div class="buttons">
-        <button class="start">Start</button>
-        <button class="stop">Stop</button>
-        <button class="reset">Reset</button>
-        <button class="Update">Update</button>
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="lap">lap</button>
     </div>
 
-    <button class="lap">lap</button>
-
     <h1>Laps:</h1>
-
-    
-  <div id="laps">
-    <p id="lapRecord"></p>
+    <div class="control">
+      <ol id="laps"></ol>
+    </div>
+    <button id="reset">Reset</button>
   </div>
+  
+</div>
+
 </div>
 
 
-    <script src="./app.js"></script>
+<script src="./app.js"></script>
 </body>
 </html>

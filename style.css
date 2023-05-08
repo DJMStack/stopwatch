@@ -139,8 +139,8 @@ button#stop {
 /* clock */
 .clock {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   overflow: hidden;
   border-radius: 250px;
   border: 6px solid white;
@@ -148,7 +148,7 @@ button#stop {
   top: 50%;
   left: 50%;
   transform: translate(-50%, 0%);
-  margin-top: 5em;
+  margin-top: 3em;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 .clock:after {
